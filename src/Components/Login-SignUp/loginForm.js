@@ -67,7 +67,7 @@ export const LoginForm = () => {
                 toast.success("Login Success")
                 dispatch(setCurrUser(users.filter(user => {
                     if(user.email===email){
-                        sessionStorage.setItem("musical-world", user.id)
+                        sessionStorage.setItem("musical-world", user.email)
                         return user
                     }})))
                 dispatch(setLogin(true))
@@ -91,7 +91,7 @@ export const LoginForm = () => {
                     <div className="error-template align-items-center text-center">
                         <GoogleLogin 
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                            buttonText="Login with Goggle"
+                            buttonText="Login with Google"
                             onSuccess={handleSuccess}
                             onFailure={handleFailure}
                             cookiePolicy="single_host_origin"
