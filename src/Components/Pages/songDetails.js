@@ -1,12 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { getLoginState, getSelectedSong } from "../../Redux/slice"
+import { useSelector, useDispatch } from 'react-redux'
+import { getLoginState, getSelectedSong, setSongDetailState } from "../../Redux/slice"
 import { Error } from "./error"
 import Disk from "../../Assets/Img/cd.png"
 
-export const SongDetails = () => {
-    const history = useHistory()
+export const SongDetails = ({duration}) => {
+    const dispatch = useDispatch()
     const isLoggedIn = useSelector(getLoginState)
     const song = useSelector(getSelectedSong)
     return (
@@ -47,7 +46,7 @@ export const SongDetails = () => {
                                     <hr/>
                                     <div className="row">
                                         <div className="align-items-center text-center">
-                                            <h6 className='mb-0'>Length : <span className='text-secondary'>{song[0].len}</span></h6>
+                                            <h6 className='mb-0'>Length : <span className='text-secondary'>{duration}</span></h6>
                                         </div>
                                     </div>
                                     <hr/>
@@ -59,13 +58,7 @@ export const SongDetails = () => {
                                     <hr/>
                                     <div className="row">
                                         <div className="align-items-center text-center">
-                                            <h6 className='mb-0'>URL : <span className='text-secondary'><a href={song[0].url} rel = "noopener noreferrer" target="_blank">{song[0].url!==''? song[0].title : ''}</a></span></h6>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <div className="row">
-                                        <div className="align-items-center text-center">
-                                            <input type='reset' className="btn btn-dark btn-lg" onClick={()=>{history.push("/")}} value="Back"/>
+                                            <input type='reset' className="btn btn-dark btn-lg" onClick={()=>dispatch(setSongDetailState(false))} value="Back"/>
                                         </div>
                                     </div>
                                 </div>

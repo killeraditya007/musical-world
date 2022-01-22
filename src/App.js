@@ -64,10 +64,6 @@ export const App = () => {
             <Route exact path="/register" component={RegisterForm} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/delete/:id" component={DeleteSong} />
-            <Route exact path="/songs/:id/:title" component={SongDetails} />
-            {/* <Route exact path="/genres/:genre" component={GenreList} />
-            <Route exact path="/languages/:lan" component={LanguageList} />
-            <Route exact path="/addsong" component={AddSong} /> */}
             <Route exact path="/error" component={Error} />
             <Redirect from='*' to='/error'/>
         </Switch>

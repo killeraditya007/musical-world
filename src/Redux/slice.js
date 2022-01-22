@@ -7,6 +7,7 @@ const initialState = {
     users:[],
     currUser:[],    
     selectedSong:[],
+    isSongDetailsVisible:false
 }
 
 const songSlice = createSlice({
@@ -30,6 +31,9 @@ const songSlice = createSlice({
         },
         setSelectedSong:(state, {payload}) => {
             state.selectedSong = payload
+        },
+        setSongDetailState:(state, {payload}) => {
+            state.isSongDetailsVisible = payload
         }
     },
 })
@@ -40,6 +44,7 @@ export const { setLogin } = songSlice.actions
 export const { setUsers } = songSlice.actions
 export const { setCurrUser } = songSlice.actions
 export const { setSelectedSong } = songSlice.actions
+export const { setSongDetailState } = songSlice.actions
 
 //method to get data
 export const getAllSongs = (state) => state.songs.songs
@@ -48,5 +53,6 @@ export const getLoginState = (state) => state.songs.isLoggedIn
 export const getAllUsers = (state) => state.songs.users
 export const getCurrUser = (state) => state.songs.currUser
 export const getSelectedSong = (state) => state.songs.selectedSong
+export const getSongDetailState = (state) => state.songs.isSongDetailsVisible
 
 export default songSlice.reducer

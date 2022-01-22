@@ -9,7 +9,9 @@
 	z-index: 1030;
 	padding: 12px 10px 10px 10px;
 }
-  
+.duration{
+	color: white;
+}
 .song-img{
 	border: 4px white solid;
 	border-radius: 50px;
@@ -17,8 +19,8 @@
 }
 .fab-container {
 	position: fixed;
-	bottom: 80px;
-	right: 30px;
+	bottom: 90px;
+	right: 20px;
 	z-index: 999;
 	cursor: pointer;
 }

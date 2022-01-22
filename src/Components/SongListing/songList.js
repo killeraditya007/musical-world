@@ -7,7 +7,7 @@ import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const SongList = ({action, filterValue}) => {
+const SongList = ({action, firstFilterValue, secondFilterValue}) => {
     const songs = useSelector(getAllSongs)
     const searchTerm = useSelector(getSearchData)
     const isLoggedIn = useSelector(getLoginState)
@@ -41,19 +41,6 @@ const SongList = ({action, filterValue}) => {
             }})))
     }
 
-    // const showDetails = (id, title) =>{
-    //     if(isLoggedIn){
-    //         dispatch(setSelectedSong(songs.filter(song => {
-    //             if(song.id === id){
-    //                 return song
-    //             }})))
-    //         history.push(`/songs/${id}/${title}`)
-    //     }
-    //     else{
-    //         toast.warning("Login First!")
-    //     }
-    // }
-
     const renderList = songs.filter((song)=>{
         if(action ==="none"){
             if(searchTerm === ""){
@@ -64,7 +51,7 @@ const SongList = ({action, filterValue}) => {
             }
         }
         else if(action ==="genre"){
-            if(song.genre.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase())){
+            if(song.genre.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase())){
                 if(searchTerm === ""){
                     return song
                 }
@@ -74,7 +61,25 @@ const SongList = ({action, filterValue}) => {
             }
         }
         else if(action ==="language"){
-            if(song.language.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase())){
+            if(song.language.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase())){
+                if(searchTerm === ""){
+                    return song
+                }
+                else if(song.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || song.artist.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || song.movie.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
+                    return song
+                }
+            }
+        }
+        else if(action ==="hybrid"){
+            if(song.language.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase()) && song.genre.toLocaleLowerCase().includes(secondFilterValue.toLocaleLowerCase())){
+                if(searchTerm === ""){
+                    return song
+                }
+                else if(song.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || song.artist.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || song.movie.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
+                    return song
+                }
+            }
+            else if(song.genre.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase()) && song.language.toLocaleLowerCase().includes(secondFilterValue.toLocaleLowerCase())){
                 if(searchTerm === ""){
                     return song
                 }
@@ -105,7 +110,7 @@ const SongList = ({action, filterValue}) => {
         )
     })
     return(
-        <>{renderList}</>
+        <>{renderList.length !==0 ? renderList : <span className='align-items-center text-center'>No Songs available.</span>}</>
     )
 }
 
