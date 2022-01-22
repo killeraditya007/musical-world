@@ -92,7 +92,6 @@ export const Header = () => {
                                     <Link className={ activeTab === "Login" ? "nav-link active" : "nav-link"} onClick={()=> setactiveTab("Login")} aria-current="page" to="/login">Login/Register</Link>
                                 </li>
                             }
-                            
                         </ul>
                     </div>
                 </div>

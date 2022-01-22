@@ -59,7 +59,7 @@ export const SongDetails = () => {
                                     <hr/>
                                     <div className="row">
                                         <div className="align-items-center text-center">
-                                            <h6 className='mb-0'>URL : <span className='text-secondary'><a href={song[0].url} target="_blank">{song[0].url!==''? song[0].title : ''}</a></span></h6>
+                                            <h6 className='mb-0'>URL : <span className='text-secondary'><a href={song[0].url} rel = "noopener noreferrer" target="_blank">{song[0].url!==''? song[0].title : ''}</a></span></h6>
                                         </div>
                                     </div>
                                     <hr/>

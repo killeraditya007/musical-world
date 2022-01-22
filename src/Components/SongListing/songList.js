@@ -33,18 +33,26 @@ const SongList = ({action, filterValue}) => {
             toast.warning("Login First!")
         }
     }
-    const showDetails = (id, title) =>{
-        if(isLoggedIn){
-            dispatch(setSelectedSong(songs.filter(song => {
-                if(song.id === id){
-                    return song
-                }})))
-            history.push(`/songs/${id}/${title}`)
-        }
-        else{
-            toast.warning("Login First!")
-        }
+
+    const showDetails = (id) =>{
+        dispatch(setSelectedSong(songs.filter(song => {
+            if(song.id === id){
+                return song
+            }})))
     }
+
+    // const showDetails = (id, title) =>{
+    //     if(isLoggedIn){
+    //         dispatch(setSelectedSong(songs.filter(song => {
+    //             if(song.id === id){
+    //                 return song
+    //             }})))
+    //         history.push(`/songs/${id}/${title}`)
+    //     }
+    //     else{
+    //         toast.warning("Login First!")
+    //     }
+    // }
 
     const renderList = songs.filter((song)=>{
         if(action ==="none"){

@@ -1,3 +1,20 @@
+.f-b{
+	display: flex;
+	justify-content: center;
+	height: 5em;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1030;
+	padding: 12px 10px 10px 10px;
+}
+  
+.song-img{
+	border: 4px white solid;
+	border-radius: 50px;
+	margin-right: 10px;
+}
 .fab-container {
 	position: fixed;
 	bottom: 80px;

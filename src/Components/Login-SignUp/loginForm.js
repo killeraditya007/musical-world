@@ -8,12 +8,6 @@ import { db } from '../../firebase'
 import {collection, addDoc} from "firebase/firestore"
 
 
-const initialState = {
-    email:'',
-    name:'',
-    src:''
-}
-
 export const LoginForm = () => {
     const dispatch = useDispatch()
     const users = useSelector(getAllUsers)
