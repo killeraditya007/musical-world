@@ -34,7 +34,7 @@ export const Home = () => {
         if(e.target.value === "none"){
             if(selectedLanguage !== "none"){
                 setAction("language")
-                setFirstFilterTerm(languageFilter.current.value)
+                setSecondFilterTerm(languageFilter.current.value)
                 setselectedGenre(e.target.value)
                 // setselectedLanguage("none")
             }
@@ -48,7 +48,7 @@ export const Home = () => {
         else{
             if(selectedLanguage !== "none"){
                 setAction("hybrid")
-                setSecondFilterTerm(e.target.value)
+                setFirstFilterTerm(e.target.value)
                 setselectedGenre(e.target.value)
             }
             else{
@@ -83,14 +83,13 @@ export const Home = () => {
             if(selectedGenre !== "none"){
                 setAction("genre")
                 setFirstFilterTerm(genreFilter.current.value)
-                console.log()
                 setselectedLanguage(e.target.value)
                 // setselectedLanguage("none")
             }
             else{
                 setFilterStatus(true)
                 setAction("none")
-                setFirstFilterTerm("")
+                setSecondFilterTerm("")
                 setselectedLanguage(e.target.value)
             }
         }
@@ -104,7 +103,7 @@ export const Home = () => {
                 setFilterStatus(false)
                 setselectedLanguage(e.target.value)
                 setAction("language")
-                setFirstFilterTerm(e.target.value)
+                setSecondFilterTerm(e.target.value)
             }
         }
     }

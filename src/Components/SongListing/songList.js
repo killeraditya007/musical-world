@@ -61,7 +61,7 @@ const SongList = ({action, firstFilterValue, secondFilterValue}) => {
             }
         }
         else if(action ==="language"){
-            if(song.language.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase())){
+            if(song.language.toLocaleLowerCase().includes(secondFilterValue.toLocaleLowerCase())){
                 if(searchTerm === ""){
                     return song
                 }
@@ -71,15 +71,7 @@ const SongList = ({action, firstFilterValue, secondFilterValue}) => {
             }
         }
         else if(action ==="hybrid"){
-            if(song.language.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase()) && song.genre.toLocaleLowerCase().includes(secondFilterValue.toLocaleLowerCase())){
-                if(searchTerm === ""){
-                    return song
-                }
-                else if(song.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || song.artist.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || song.movie.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
-                    return song
-                }
-            }
-            else if(song.genre.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase()) && song.language.toLocaleLowerCase().includes(secondFilterValue.toLocaleLowerCase())){
+            if(song.language.toLocaleLowerCase().includes(secondFilterValue.toLocaleLowerCase()) && song.genre.toLocaleLowerCase().includes(firstFilterValue.toLocaleLowerCase())){
                 if(searchTerm === ""){
                     return song
                 }
